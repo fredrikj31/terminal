@@ -1,5 +1,5 @@
-.terminal, .cmd {
-    background: black;
-    color: #0f0;
+.terminal {
+    --color: white;
+    --background: black;
 	height: 100%;
 }

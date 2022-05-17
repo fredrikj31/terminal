@@ -1,5 +1,7 @@
 import { Command } from "./commands/Command.js";
 
+import Help from "./commands/help.js";
+import Color from "./commands/color.js";
 import { echo } from "./commands/echo.js";
 import { about } from "./commands/about.js";
 import { Exit } from "./commands/exit.js";
@@ -16,7 +18,11 @@ const terminal = $("#terminal").terminal({
 			this.echo("Hej med dig");
 		}
 	},
-	exit: function () {
+	help: function(args) {
+		this.echo(args);
+		//help.help();
+	},
+	exit: function() {
 		exit.exit();
 	},
 	echo: function (arg) {
@@ -25,17 +31,21 @@ const terminal = $("#terminal").terminal({
 	about: function (arg) {
 		about(this, arg);
 	},
+	ls: function () {
+		ls(this);
+	},
+	// Default commands
 	clear: function () {
 		clear(this);
 	},
-	ls: function () {
-		ls(this);
+	color: function(arg) {
+		color.setColor(arg);
 	}
 }, {
-	greetings: false,
-	name: "chowmean.github.io",
+	greetings: "Hello high-tech person! Welcome to my portfolio. \nTo see all commands, type \"help\" in the terminal.\n",
 	prompt: "root@127.0.0.1: $ ",
 	color: "green",
+	checkArity: false,
 	keymap: {
 		'CTRL+Q': function (e, original) {
 			window.close();
@@ -46,4 +56,5 @@ const terminal = $("#terminal").terminal({
 // Functions
 const cmd = new Command(terminal);
 const exit = new Exit(cmd.terminal);
-
+const color = new Color(cmd.terminal);
+const help = new Help(cmd.terminal);
