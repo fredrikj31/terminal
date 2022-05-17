@@ -39,6 +39,7 @@ const terminal = $("#terminal").terminal({
 		clear(this);
 	},
 	color: function(arg) {
+		console.log(arg);
 		color.setColor(arg);
 	}
 }, {
