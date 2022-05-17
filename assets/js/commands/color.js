@@ -9,24 +9,19 @@ class Color {
 	}
 
 	setColor(color) {
-		switch (color) {
-			case "black":
-				this.element.style.setProperty('--color', 'black');
-				break;
-			case "blue":
-				this.element.style.setProperty('--color', 'blue');
+		if (color === undefined) {
+			this.errorMessage()
+			return;
+		}
+		switch (color.toLowerCase()) {
+			case "red":
+				this.element.style.setProperty('--color', 'red');
 				break;
 			case "green":
 				this.element.style.setProperty('--color', 'green');
 				break;
-			case "aqua":
-				this.element.style.setProperty('--color', 'aqua');
-				break;
-			case "red":
-				this.element.style.setProperty('--color', 'red');
-				break;
-			case "purple":
-				this.element.style.setProperty('--color', 'purple');
+			case "blue":
+				this.element.style.setProperty('--color', 'blue');
 				break;
 			case "yellow":
 				this.element.style.setProperty('--color', 'yellow');
@@ -34,12 +29,14 @@ class Color {
 			case "white":
 				this.element.style.setProperty('--color', 'white');
 				break;
-			case "gray":
-				this.element.style.setProperty('--color', 'gray');
-				break;
 			default:
+				this.errorMessage();
 				break;
 		}
+	}
+
+	errorMessage() {
+		this.terminal.echo("An invalid color was giving! \n\nPlease enter a valid color: \n - Red \n - Green \n - Blue \n - Yellow \n - White");
 	}
 }
 
