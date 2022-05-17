@@ -1,9 +1,36 @@
-function exit(term) {
+class Exit {
+	
+	terminal = null;
+	cancelExit = false;
 
-	term.echo("Closing the window in 5 seconds...");
-	term.pause();
+	constructor(term) {
+		this.terminal = term;
+	}
 
-	setTimeout(() => { window.close() }, 5000);
+	exit() {
+		this.terminal.echo("Closing the window in 5 seconds...");
+		this.terminal.pause();
+
+		setTimeout(() => { 
+			if (this.cancelExit == true) {
+				window.close();
+				this.cancelExit = false;
+				return;
+			} else {
+				this.cancelExit = false;
+				return;
+			}
+		}, 5000);
+	}
+
+	cancelExit() {
+		if (this.cancelExit == false) {
+			this.cancelExit = true;
+			return;
+		} else {
+			return;
+		}
+	}
 }
 
-export { exit };
+export { Exit };
