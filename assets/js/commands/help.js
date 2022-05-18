@@ -56,10 +56,13 @@ class Help {
 				total = page * this.commandsPerPage;
 			}
 			for (let index = ((page - 1) * this.commandsPerPage); index < total; index++) {
-				console.log(this.commands[index]["Command"]);			
+				console.log(this.commands[index]["Command"]);	
 			}
 		}
+	}
 
+	printCommand(command, description) {
+		this.terminal.echo();
 	}
 }
 
