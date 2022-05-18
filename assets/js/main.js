@@ -18,8 +18,8 @@ const terminal = $("#terminal").terminal({
 			this.echo("Hej med dig");
 		}
 	},
-	help: function(args) {
-		help.help();
+	help: function(arg) {
+		help.help(arg);
 	},
 	exit: function() {
 		exit.exit();

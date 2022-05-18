@@ -35,28 +35,31 @@ class Help {
 	}
 
 	help(page) {
+		//console.log(page);
 		if (page === undefined) {
 			this.printCommands(1);
 		} else {
-			this.printCommands(2)
-		}
-
-		let pages = Math.floor(this.commands.length / this.commandsPerPage);
-		if (page <= pages) {
-			this.printCommands(page);
+			this.printCommands(page)
 		}
 	}
 
 	printCommands(page) {
-
-		let total = page * this.commandsPerPage;
-		if (total > this.commands.length) {
-			total = this.commands.length;
+		if (page === 1) {
+			for (let index = 0; index < this.commandsPerPage; index++) {
+				console.log(this.commands[index]["Command"]);			
+			}
+		} else {
+			let total = 0;
+			if (page * this.commandsPerPage > this.commands.length) {
+				total = this.commands.length;
+			} else {
+				total = page * this.commandsPerPage;
+			}
+			for (let index = ((page - 1) * this.commandsPerPage); index < total; index++) {
+				console.log(this.commands[index]["Command"]);			
+			}
 		}
 
-		for (let index = total; index < total; index++) {
-			console.log(this.commands[index]["Command"]);			
-		}
 	}
 }
 
