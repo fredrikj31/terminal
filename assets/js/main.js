@@ -19,7 +19,6 @@ const terminal = $("#terminal").terminal({
 		}
 	},
 	help: function(args) {
-		this.echo(args);
 		help.help();
 	},
 	exit: function() {

@@ -17,7 +17,15 @@ class Help {
 			"Description": "Shows this menu... :)"
 		},
 		{
-			"Command": "help",
+			"Command": "heyo",
+			"Description": "Shows this menu... :)"
+		},
+		{
+			"Command": "hello",
+			"Description": "Shows this menu... :)"
+		},
+		{
+			"Command": "world",
 			"Description": "Shows this menu... :)"
 		},
 	]
@@ -29,11 +37,9 @@ class Help {
 	help(page) {
 		if (page === undefined) {
 			this.printCommands(1);
+		} else {
+			this.printCommands(2)
 		}
-		this.terminal.echo("-----");
-		this.terminal.echo("Hej med dig");
-		this.terminal.echo("-----");
-		this.printCommands();
 
 		let pages = Math.floor(this.commands.length / this.commandsPerPage);
 		if (page <= pages) {
@@ -42,7 +48,13 @@ class Help {
 	}
 
 	printCommands(page) {
-		for (let index = 0; index < page * this.commandsPerPage; index++) {
+
+		let total = page * this.commandsPerPage;
+		if (total > this.commands.length) {
+			total = this.commands.length;
+		}
+
+		for (let index = total; index < total; index++) {
 			console.log(this.commands[index]["Command"]);			
 		}
 	}
