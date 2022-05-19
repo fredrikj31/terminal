@@ -2,24 +2,31 @@ import { Command } from "./commands/Command.js";
 
 import Help from "./commands/help.js";
 import Color from "./commands/color.js";
+import Portfolio from "./commands/portfolio.js";
 import { echo } from "./commands/echo.js";
 import { about } from "./commands/about.js";
 import { Exit } from "./commands/exit.js";
 import { clear } from "./commands/clear.js";
 
 const terminal = $("#terminal").terminal({
-	// Register commands
+	// General Commands
+	help: function(arg) {
+		help.help(arg);
+	},
 	open: function (value) {
 		var div = $("<p>Hello <strong>World</strong></p>")
 		this.echo(div);
 	},
-	sub: {
+	portfolio: {
 		get: function (arg) {
 			this.echo("Hej med dig");
+		},
+		list: function () {
+			portfolio.list();
+		},
+		show: function (arg) {
+			portfolio.show(arg);
 		}
-	},
-	help: function(arg) {
-		help.help(arg);
 	},
 	exit: function() {
 		exit.exit();
@@ -38,7 +45,6 @@ const terminal = $("#terminal").terminal({
 		clear(this);
 	},
 	color: function(arg) {
-		console.log(arg);
 		color.setColor(arg);
 	}
 }, {
@@ -58,3 +64,4 @@ const cmd = new Command(terminal);
 const exit = new Exit(cmd.terminal);
 const color = new Color(cmd.terminal);
 const help = new Help(cmd.terminal);
+const portfolio = new Portfolio(cmd.terminal);

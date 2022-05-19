@@ -1,0 +1,26 @@
+[
+	{
+		"name": "LectioScraper",
+		"description": "This is the description of the specific project",
+		"techStack": [
+			"Python"
+		],
+		"technologies": [
+			"Webscraping"
+		]
+	},
+	{
+		"name": "LectioToCal",
+		"description": "This is the description of the specific project",
+		"techStack": [
+			"Electron",
+			"HTML",
+			"CSS",
+			"Javascript"
+		],
+		"technologies": [
+			"Api-Calling",
+			"Third-party Integrations"
+		]
+	}
+]

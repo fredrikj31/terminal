@@ -3,6 +3,29 @@ class Color {
 	terminal = null
 	element = null;
 
+	colors = [
+		{
+			"color": "red",
+			"code": "#FF0000",
+		},
+		{
+			"color": "green",
+			"code": "#00FF00",
+		},
+		{
+			"color": "blue",
+			"code": "#0000FF",
+		},
+		{
+			"color": "yellow",
+			"code": "#FFFF00",
+		},
+		{
+			"color": "white",
+			"code": "#FFFFFF",
+		}
+	];
+
 	constructor(term) {
 		this.terminal = term;
 		this.element = document.getElementById("terminal");
@@ -13,25 +36,12 @@ class Color {
 			this.errorMessage()
 			return;
 		}
-		switch (color.toLowerCase()) {
-			case "red":
-				this.element.style.setProperty('--color', 'red');
-				break;
-			case "green":
-				this.element.style.setProperty('--color', 'green');
-				break;
-			case "blue":
-				this.element.style.setProperty('--color', 'blue');
-				break;
-			case "yellow":
-				this.element.style.setProperty('--color', 'yellow');
-				break;
-			case "white":
-				this.element.style.setProperty('--color', 'white');
-				break;
-			default:
-				this.errorMessage();
-				break;
+		for (let index = 0; index < this.colors.length; index++) {
+			if (this.colors[index]["color"] === color) {
+				this.element.style.setProperty('--color', this.colors[index]["code"]);
+			} else {
+				continue;
+			}
 		}
 	}
 
