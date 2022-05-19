@@ -48,7 +48,6 @@ const terminal = $("#terminal").terminal({
 }, {
 	greetings: "Hello high-tech person! Welcome to my portfolio. \nTo see all commands, type \"help\" in the terminal.\n",
 	prompt: "root@127.0.0.1: $ ",
-	color: "green",
 	checkArity: false,
 	keymap: {
 		'CTRL+Q': function (e, original) {
