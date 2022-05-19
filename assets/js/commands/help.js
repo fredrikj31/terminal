@@ -44,10 +44,22 @@ class Help {
 	}
 
 	printCommands(page) {
+
+		let pages = 0;
+		// Calculating total number of page
+		if (this.commands.length % this.commandsPerPage > 0) {
+			pages = Math.round(this.commands.length / this.commandsPerPage) + 1;
+		} else {
+			pages = (this.commands.length / this.commandsPerPage);
+		}
+
 		if (page === 1) {
+			this.terminal.echo("------------ Commands ------------");
 			for (let index = 0; index < this.commandsPerPage; index++) {
-				console.log(this.commands[index]["Command"]);			
+				this.printCommand(this.commands[index]["Command"], this.commands[index]["Description"]);			
 			}
+			this.terminal.echo(`---------- Page ${page} of ${pages}  ----------`);
+			this.terminal.echo("\n");
 		} else {
 			let total = 0;
 			if (page * this.commandsPerPage > this.commands.length) {
@@ -55,14 +67,18 @@ class Help {
 			} else {
 				total = page * this.commandsPerPage;
 			}
+
+			this.terminal.echo("------------ Commands ------------");
 			for (let index = ((page - 1) * this.commandsPerPage); index < total; index++) {
-				console.log(this.commands[index]["Command"]);	
+				this.printCommand(this.commands[index]["Command"], this.commands[index]["Description"]);
 			}
+			this.terminal.echo(`---------- Page ${page} of ${pages}  ----------`);
+			this.terminal.echo("\n");
 		}
 	}
 
 	printCommand(command, description) {
-		this.terminal.echo();
+		this.terminal.echo(`${command} - ${description}`);
 	}
 }
 
