@@ -3,35 +3,22 @@ class Help {
 	terminal = null;
 	commandsPerPage = 5;
 
-	commands = [
-		{
-			"Command": "help",
-			"Description": "Shows this menu... :)"
-		},
-		{
-			"Command": "clear",
-			"Description": "Clears the terminal, so there is nothing left."
-		},
-		{
-			"Command": "color",
-			"Description": "Shows this menu... :)"
-		},
-		{
-			"Command": "heyo",
-			"Description": "Shows this menu... :)"
-		},
-		{
-			"Command": "hello",
-			"Description": "Shows this menu... :)"
-		},
-		{
-			"Command": "world",
-			"Description": "Shows this menu... :)"
-		},
-	]
+	commands = null;
 
 	constructor(term) {
 		this.terminal = term;
+		this.init();
+	}
+
+	init = () => {
+		this.fetchCommands().then((result) => {
+			this.commands = result;
+		});
+	}
+
+	fetchCommands = async () => {
+		return await fetch("./assets/data/commands.json")
+		.then(response => response.json())
 	}
 
 	help(page) {

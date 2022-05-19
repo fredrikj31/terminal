@@ -1,0 +1,26 @@
+[
+	{
+		"Command": "help",
+		"Description": "Shows this menu... :)"
+	},
+	{
+		"Command": "clear",
+		"Description": "Clears the terminal, so there is nothing left."
+	},
+	{
+		"Command": "color",
+		"Description": "Shows this menu... :)"
+	},
+	{
+		"Command": "heyo",
+		"Description": "Shows this menu... :)"
+	},
+	{
+		"Command": "hello",
+		"Description": "Shows this menu... :)"
+	},
+	{
+		"Command": "world",
+		"Description": "Shows this menu... :)"
+	}
+]

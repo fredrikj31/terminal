@@ -1,5 +1,3 @@
-import { Command } from "./commands/Command.js";
-
 import Help from "./commands/help.js";
 import Color from "./commands/color.js";
 import Portfolio from "./commands/portfolio.js";
@@ -60,8 +58,7 @@ const terminal = $("#terminal").terminal({
 });
 
 // Functions
-const cmd = new Command(terminal);
-const exit = new Exit(cmd.terminal);
-const color = new Color(cmd.terminal);
-const help = new Help(cmd.terminal);
-const portfolio = new Portfolio(cmd.terminal);
+const exit = new Exit(terminal);
+const color = new Color(terminal);
+const help = new Help(terminal);
+const portfolio = new Portfolio(terminal);
